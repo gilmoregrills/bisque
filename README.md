@@ -13,6 +13,8 @@ Webserver/API wrapper for beets built on top of the [`linuxserver/beets`]() imag
 
 ### Example `docker-compose.yaml` file:
 
+> note: if you're already using the beets container image then bisque should work as a drop-in replacement
+
 ```yaml
 services:
   beets:
