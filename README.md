@@ -4,12 +4,14 @@
 
 Webserver/API wrapper for beets built on top of the [`linuxserver/beets`]() image. All it does is accept requests from [`slskd`]() on the `/import` path, pick out the download directory name, and pass that to `beet import --quiet`.
 
-Caveats:
+## Caveats:
 - You should ensure the `config.yaml` included in the directory you mount to the `/config` path is complete, because no command-line arguments except `--quiet` will be passed.
   - In particular you might want to set the `quiet_fallback` option to `asis` if you're generally importing music from good sources with reliable tags.
 - Your `slskd` download directory and your `bisque` downloads directory should use the same path (they probably both already use `/downloads`).
 
-Example `docker-compose.yaml` file including caddy setup and domain:
+## Examples
+
+### Example `docker-compose.yaml` file:
 
 ```yaml
 services:
@@ -29,7 +31,7 @@ services:
     restart: unless-stopped
 ```
 
-Example `slskd` webhook config:
+### Example `slskd` webhook config:
 
 ```yaml
 integration:
@@ -41,7 +43,7 @@ integration:
         url: https://bisque.nas.eelgirl.biz
 ```
 
-notes/docs:
+## notes/docs (for my reference):
 - https://github.com/slskd/slskd/blob/master/src/slskd/Events/Types/Events.cs
 - https://github.com/slskd/slskd/blob/master/docs/config.md
 - https://hub.docker.com/r/linuxserver/beets/
