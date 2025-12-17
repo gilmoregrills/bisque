@@ -50,3 +50,8 @@ integration:
       call:
         url: https://bisque.nas.eelgirl.biz
 ```
+
+notes/docs:
+- https://github.com/slskd/slskd/blob/master/src/slskd/Events/Types/Events.cs
+- https://github.com/slskd/slskd/blob/master/docs/config.md
+- https://hub.docker.com/r/linuxserver/beets/
