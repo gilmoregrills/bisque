@@ -14,29 +14,19 @@ Example `docker-compose.yaml` file including caddy setup and domain:
 ```yaml
 services:
   beets:
-    image: ???
+    image: ghcr.io/gilmoregrills/bisque:main
     container_name: bisque
-    labels:
-      caddy: bisque.nas.eelgirl.biz
-      caddy.import: inttls
-      caddy.reverse_proxy: "{{upstreams 8074}}"
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=Etc/UTC
     volumes:
-      - /nas/beets/config:/config
-      - /nas/data/music:/music
-      - /nas/data/downloads:/downloads
+      - /path/to/config:/config
+      - /path/to/music:/music
+      - /path/to/downloads:/downloads
     ports:
       - 8074:8074
-    networks:
-      - caddy
     restart: unless-stopped
-
-networks:
-  caddy:
-    external: true
 ```
 
 Example `slskd` webhook config:
