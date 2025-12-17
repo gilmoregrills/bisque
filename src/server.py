@@ -3,6 +3,7 @@ from wsgiref.simple_server import make_server
 import falcon
 import subprocess
 
+
 class BeetImportResource:
     def on_post(self, req: falcon.Request, resp: falcon.Response) -> None:
         data = req.get_media()
