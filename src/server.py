@@ -6,19 +6,19 @@ import subprocess
 class BeetImportResource:
     def on_post(self, req: falcon.Request, resp: falcon.Response) -> None:
         data = req.get_media()
-        print(f"Received import request for directory: {data['LocalDirectoryName']}")
+        print(f"Received import request for directory: {data['localDirectoryName']}")
         try:
-            print(f"beet import --quiet {data['LocalDirectoryName']}")
-            subprocess.Popen(['beet', 'import', '--quiet', data['LocalDirectoryName']])
+            print(f"beet import --quiet {data['localDirectoryName']}")
+            subprocess.Popen(['beet', 'import', '--quiet', data['localDirectoryName']])
             resp.status = falcon.HTTP_200
             resp.media = {
                 'message': 'Import triggered successfully.',
-                'output': f"Beet import process triggered for directory: {data['LocalDirectoryName']}"
+                'output': f"Beet import process triggered for directory: {data['localDirectoryName']}"
             }
         except Exception as e:
             resp.status = falcon.HTTP_500
             resp.media = {
-                'message': "Import failed for: {data['LocalDirectoryName']}",
+                'message': "Import failed for: {data['localDirectoryName']}",
                 'error': e.stderr
             }
 
