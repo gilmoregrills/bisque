@@ -9,7 +9,7 @@ class BeetImportResource:
         print(f"Received import request for directory: {data['LocalDirectoryName']}")
         try:
             print(f"beet import --quiet {data['LocalDirectoryName']}")
-            # subprocess.Popen(['beet', 'import', '--quiet', data['LocalDirectoryName']])
+            subprocess.Popen(['beet', 'import', '--quiet', data['LocalDirectoryName']])
             resp.status = falcon.HTTP_200
             resp.media = {
                 'message': 'Import triggered successfully.',
