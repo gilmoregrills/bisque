@@ -11,21 +11,26 @@ class BeetImportResource:
         try:
             print(f"beet import --quiet {data['localDirectoryName']}")
             process = subprocess.Popen(['beet', 'import', '--quiet', data['localDirectoryName']])
-            resp.status = falcon.HTTP_200
-            resp.media = {
-                'message': 'Import triggered successfully.',
-                'output': f"Beet import process triggered for directory: {data['localDirectoryName']}"
-            }
-            exit_code = process.wait()
+            process.wait()
             if exit_code != 0:
                 print(f"Import process failed with exit code: {exit_code}")
+                resp.status = falcon.HTTP_500
+                resp.media = {
+                    'message': f"Import failed for: {data['localDirectoryName']}",
+                    'error': f"Beet import process exited with code {exit_code}"
+                }
             else:
                 print("Import process completed successfully.")
+                resp.status = falcon.HTTP_200
+                resp.media = {
+                    'message': 'Imported complete.',
+                    'output': f"Beet import process triggered for directory: {data['localDirectoryName']}"
+                }
         except Exception as e:
             resp.status = falcon.HTTP_500
             resp.media = {
                 'message': "Import failed for: {data['localDirectoryName']}",
-                'error': e.stderr
+                'error': f"{e}"
             }
 
 app = falcon.App()
