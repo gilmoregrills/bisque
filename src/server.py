@@ -12,7 +12,7 @@ class BeetImportResource:
             print(f"beet import --quiet {data['localDirectoryName']}")
             process = subprocess.Popen(['beet', 'import', '--quiet', data['localDirectoryName']])
             process.wait()
-            if exit_code != 0:
+            if process.returncode != 0:
                 print(f"Import process failed with exit code: {exit_code}")
                 resp.status = falcon.HTTP_500
                 resp.media = {
