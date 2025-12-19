@@ -1,15 +1,12 @@
+import subprocess
+import time
 from wsgiref.simple_server import make_server
 
 import falcon
-import subprocess
-import os
-import signal
-import time
 import psutil
 
 
 def wait_for_beet_processes(parent_pid: int, timeout: int = 3600) -> None:
-    # Wait for all beet processes spawned by parent to complete.
     start_time = time.time()
 
     while time.time() - start_time < timeout:
