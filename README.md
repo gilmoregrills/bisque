@@ -36,7 +36,7 @@ services:
     restart: unless-stopped
 ```
 
-### Example `beets` config:
+### Example `beets` config:
 
 ```yaml
 directory: /music # gotta use the path inside the docker container that we mount above
