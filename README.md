@@ -7,6 +7,7 @@ Webserver/API wrapper for beets built on top of the [`linuxserver/beets`]() imag
 ## Caveats:
 - You should ensure the `config.yaml` included in the directory you mount to the `/config` path is complete, because no command-line arguments except `--quiet` will be passed.
   - In particular you might want to set the `quiet_fallback` option to `asis` if you're generally importing music from good sources with reliable tags.
+- Your beets config needs to be in `/config/config.yaml`, which it probably already is.
 - Your `slskd` download directory and your `bisque` downloads directory should use the same path (they probably both already use `/downloads`).
 
 ## Examples
