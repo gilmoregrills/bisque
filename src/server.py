@@ -36,8 +36,8 @@ class BeetImportResource:
         data = req.get_media()
         print(f"Received import request for directory: {data['localDirectoryName']}")
         try:
-            print(f"beet --config='/config/config.yaml' import --quiet {data['localDirectoryName']}")
-            result = subprocess.Popen(['beet', '-v', '--config="/config/config.yaml"', 'import', '--quiet', data['localDirectoryName']])
+            print(f"beet --config=config/config.yaml import --quiet {data['localDirectoryName']}")
+            result = subprocess.Popen(['beet', '-v', '--config=config/config.yaml', 'import', '--quiet', data['localDirectoryName']])
             print("Main beet process completed, waiting for background imports...")
             wait_for_beet_processes(result.pid)
             print("All import processes completed successfully.")
