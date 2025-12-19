@@ -2,7 +2,9 @@
 
 > if you turned over various contractions of beets and soulseek in your head enough you'd arrive at the same name
 
-Hacky API wrapper for `beets` built on top of the [`linuxserver/beets`]() image. All it does is accept requests from [`slskd`]() on the `/import` path, pick out the download directory name, and pass that to `beet import --quiet`.
+Hacky API wrapper for `beets` built on top of the [`linuxserver/beets`](https://github.com/linuxserver/docker-beets/tree/master) image. All it does is accept webhook requests from [`slskd`](https://github.com/slskd/slskd) on the `/import` path, pick out the download directory name, and pass that to `beet import --quiet`.
+
+The point is to be able to download music with `slskd` and have `beets` import it into your library immediately, rather than running `beet import` on a cron or manually or something else.
 
 ## Caveats:
 - You should ensure the `config.yaml` included in the directory you mount to the `/config` path is complete, because no command-line arguments except `--quiet` will be passed.
