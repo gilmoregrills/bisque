@@ -2,7 +2,7 @@
 
 > if you turned over various contractions of beets and soulseek in your head enough you'd arrive at the same name
 
-Webserver/API wrapper for beets built on top of the [`linuxserver/beets`]() image. All it does is accept requests from [`slskd`]() on the `/import` path, pick out the download directory name, and pass that to `beet import --quiet`.
+Hacky API wrapper for `beets` built on top of the [`linuxserver/beets`]() image. All it does is accept requests from [`slskd`]() on the `/import` path, pick out the download directory name, and pass that to `beet import --quiet`.
 
 ## Caveats:
 - You should ensure the `config.yaml` included in the directory you mount to the `/config` path is complete, because no command-line arguments except `--quiet` will be passed.
@@ -15,6 +15,8 @@ Webserver/API wrapper for beets built on top of the [`linuxserver/beets`]() imag
 ### Example `docker-compose.yaml` file:
 
 > note: if you're already using the beets container image then bisque should work as a drop-in replacement
+
+The `/config` directory should contain your `beets` `config.yaml`, which should ideally point to your library database in the same `/config` directory.
 
 ```yaml
 services:
@@ -32,6 +34,35 @@ services:
     ports:
       - 8074:8074
     restart: unless-stopped
+```
+
+### Example `beets` config:
+
+```yaml
+directory: /music # gotta use the path inside the docker container that we mount above
+library: /config/library.db # likewise here, it should be /config not /path/to/config
+import:
+  move: yes
+permissions:
+  file: 777
+  dir: 777
+quiet_fallback: asis
+plugins: web fetchart lyrics
+fetchart:
+  auto: yes
+  lastfm_key: <REDACTED>
+  sources:
+    - filesystem
+    - coverart
+    - itunes
+    - amazon
+    - albumart
+    - lastfm
+lyrics:
+  auto: no
+  synced: yes
+  sources:
+    - lrclib
 ```
 
 ### Example `slskd` webhook config:
