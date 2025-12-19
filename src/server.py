@@ -37,7 +37,7 @@ class BeetImportResource:
         print(f"Received import request for directory: {data['localDirectoryName']}")
         try:
             print(f"beet import --quiet {data['localDirectoryName']}")
-            result = subprocess.run(['beet', '-v', 'import', '--quiet', data['localDirectoryName']])
+            result = subprocess.Popen(['beet', '-v', 'import', '--quiet', data['localDirectoryName']])
             print("Main beet process completed, waiting for background imports...")
             wait_for_beet_processes(result.pid)
             print("All import processes completed successfully.")
