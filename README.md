@@ -19,7 +19,7 @@ Webserver/API wrapper for beets built on top of the [`linuxserver/beets`]() imag
 ```yaml
 services:
   beets:
-    image: ghcr.io/gilmoregrills/bisque:main
+    image: ghcr.io/gilmoregrills/bisque:<VERSION>
     container_name: bisque
     environment:
       - PUID=1000
