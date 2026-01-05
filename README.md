@@ -76,7 +76,7 @@ integration:
       on:
         - DownloadDirectoryComplete
       call:
-        url: https://bisque.nas.eelgirl.biz
+        url: https://bisque.my.domain
 ```
 
 ## notes/docs (for my reference):
