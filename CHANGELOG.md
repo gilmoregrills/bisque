@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.5](https://github.com/gilmoregrills/bisque/compare/v0.0.4...v0.0.5) (2026-01-05)
+
+
+### Bug Fixes
+
+* clean up unneeded deps ([984c4b1](https://github.com/gilmoregrills/bisque/commit/984c4b1e7be15b9fd35a38f3b6286729a2c4930d))
+
 ## [0.0.4](https://github.com/gilmoregrills/bisque/compare/v0.0.3...v0.0.4) (2025-12-19)
 
 
