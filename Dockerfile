@@ -1,4 +1,4 @@
-FROM lscr.io/linuxserver/beets:2.3.1
+FROM lscr.io/linuxserver/beets:2.13.1
 
 COPY ./src/ /app/
 RUN apk add --no-cache gcc python3-dev python3-dev build-base linux-headers \
